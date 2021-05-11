@@ -1,0 +1,208 @@
+:root {
+    /* Text */
+    --desaturated-blue: hsl(238, 29%, 16%);
+    --soft-red: hsl(14, 88%, 65%);
+    /* Gradient */
+    --soft-violet: hsl(273, 75%, 66%);
+    --soft-blue: hsl(240, 73%, 65%);
+    /* Dividers */
+    --light-grayish-blue: hsl(240, 5%, 91%);
+    /* Text */
+    --very-dark-grayish-blue: hsl(237, 12%, 33%);
+    --dark-grayish-blue: hsl(240, 6%, 50%);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Kumbh Sans', sans-serif;
+    margin: 0;
+    background-image: linear-gradient(var(--soft-violet), var(--soft-blue));
+}
+
+img {
+    max-width: 100%;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.main-container {
+    min-height: 100vh;
+    padding: 9rem 1rem 6rem;
+    /* background-image: linear-gradient(var(--soft-violet), var(--soft-blue)); */
+    position: relative;
+}
+
+.main {
+    padding: 6rem 1rem 1rem;
+    background-color: #fff;
+    border-radius: 20px;
+    background-image: url(../assets/img/bg-pattern-mobile.svg);
+    background-repeat: no-repeat;
+    background-position: 40px 0;
+    box-shadow: 0 20px 30px hsl(240, 73%, 25%);
+}
+
+.picture {
+    position: absolute;
+    top: 37px;
+    left: 30px;
+}
+
+.header {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.accordion {
+    font-size: .9rem;
+    padding-bottom: 2rem;
+}
+
+.accordion__item {
+    position: relative;
+    border-bottom: 1px solid var(--light-grayish-blue);
+    color: var(--very-dark-grayish-blue);
+    overflow: hidden;
+}
+
+.accordion__question {
+    position: relative;
+    margin: 0;
+    padding: 1rem 0;
+    font-size: .9rem;
+    cursor: pointer;
+}
+
+.accordion__response {
+    margin: 0;
+    max-height: 0;
+    font-size: .9rem;
+    color: var(--dark-grayish-blue);
+    transition: all 0.4s ease;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.accordion__question::after {
+    content: url(../assets/img/icon-arrow-down.svg);
+    position: absolute;
+    top: 15px;
+    right: 5px;
+}
+
+.accordion-open {
+    padding: 0 0 1rem;
+    opacity: 1;
+    max-height: min-content;
+}
+
+.accordion__question--black {
+    font-weight: 700;
+    color: var(--desaturated-blue)
+}
+
+
+/* Arrow */
+
+.accordion__question.arrow-show::after {
+    transform: rotateX(180deg);
+}
+@media screen and (min-width: 375px) {
+    .main {
+        background-position: 55px 0;
+    }
+    .picture {
+        left: 45px;
+    }
+}
+@media screen and (min-width: 414px) {
+    .main {
+        background-position: 74px 0;
+    }
+    .picture {
+        left: 64px;
+    }
+}
+@media screen and (min-width: 768px) {
+    .main-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .main {
+        width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+        background-position: center 0;
+    }
+    .picture {
+        top: 177px;
+        left: 236px;
+    }
+}
+@media screen and (min-width: 800px) {
+    .picture {
+        top: 305px;
+        left: 255px;
+    }
+}
+@media screen and (min-width: 801px) {
+    /* Añadido main-container */
+    .main-container {
+        max-width: 1280px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .main {
+        width: 75%;
+        padding: 2rem 4rem 4rem;
+        background-image: url(../assets/img/bg-pattern-desktop.svg);
+        /* background-position: -540px -280px; */
+        background-position: -545px -280px;
+        background-size: 100%;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+    .picture {
+        position: static;
+        /* margin-left: -139px; */
+        margin-left: -145px;
+    }
+    .picture::before {
+        content: url(../assets/img/box-desktop.svg);
+        position: absolute;
+        /* top: 430px; */
+        top: 465px;
+        left: 79px;
+        transition: all .5s ease;
+    }
+    .picture.box-show::before {
+        transform: translateX(-40px);
+    }
+    .header {
+        text-align: left;
+    }
+    .container {
+        width: 50%;
+        margin-left: auto;
+    }
+    .accordion {
+        height: 280px;
+    }
+    .accordion__question {
+        font-size: 1rem;
+    }
+    .accordion__question:hover {
+        color: var(--soft-red);
+    }
+}
