@@ -1,6 +1,6 @@
 const accordionQuestions = document.querySelectorAll('.accordion__question')
 const accordionAnswers = document.querySelectorAll('.accordion__response')
-const picture = document.querySelector('.picture')
+const mainContainer = document.querySelector('.main-container')
 
 
 const closeAccordion = () => {
@@ -43,9 +43,9 @@ accordionQuestions.forEach(item => {
 
     })
     item.addEventListener('mouseenter', () => {
-        picture.classList.add('box-show')
+        mainContainer.classList.add('box-show')
     })
     item.addEventListener('mouseleave', () => {
-        picture.classList.remove('box-show')
+        mainContainer.classList.remove('box-show')
     })
 })

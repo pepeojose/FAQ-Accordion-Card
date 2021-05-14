@@ -12,7 +12,9 @@
     --dark-grayish-blue: hsl(240, 6%, 50%);
 }
 
-* {
+*,
+*::before,
+*::before {
     box-sizing: border-box;
 }
 
@@ -35,31 +37,41 @@ ul {
 
 .main-container {
     min-height: 100vh;
-    padding: 9rem 1rem 6rem;
-    /* background-image: linear-gradient(var(--soft-violet), var(--soft-blue)); */
-    position: relative;
+    padding: 9rem 1.5rem 6rem;
 }
 
 .main {
-    padding: 6rem 1rem 1rem;
+    padding: 3.5rem 1rem 1rem;
     background-color: #fff;
     border-radius: 20px;
-    background-image: url(../assets/img/bg-pattern-mobile.svg);
-    background-repeat: no-repeat;
-    background-position: 40px 0;
     box-shadow: 0 20px 30px hsl(240, 73%, 25%);
 }
 
 .picture {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    margin-top: -163px;
+}
+
+.picture::before {
+    content: url(../assets/img/bg-pattern-mobile.svg);
     position: absolute;
-    top: 37px;
-    left: 30px;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .header {
     margin-top: 3rem;
     margin-bottom: 2rem;
     text-align: center;
+}
+
+.header__title {
+    margin-top: 1.5rem;
+    font-size: 2rem;
 }
 
 .accordion {
@@ -78,14 +90,14 @@ ul {
     position: relative;
     margin: 0;
     padding: 1rem 0;
-    font-size: .9rem;
+    font-size: .8rem;
     cursor: pointer;
 }
 
 .accordion__response {
     margin: 0;
     max-height: 0;
-    font-size: .9rem;
+    font-size: .8rem;
     color: var(--dark-grayish-blue);
     transition: all 0.4s ease;
     opacity: 0;
@@ -110,28 +122,12 @@ ul {
     color: var(--desaturated-blue)
 }
 
-
 /* Arrow */
 
 .accordion__question.arrow-show::after {
     transform: rotateX(180deg);
 }
-@media screen and (min-width: 375px) {
-    .main {
-        background-position: 55px 0;
-    }
-    .picture {
-        left: 45px;
-    }
-}
-@media screen and (min-width: 414px) {
-    .main {
-        background-position: 74px 0;
-    }
-    .picture {
-        left: 64px;
-    }
-}
+
 @media screen and (min-width: 768px) {
     .main-container {
         display: flex;
@@ -142,66 +138,76 @@ ul {
         width: 85%;
         margin-left: auto;
         margin-right: auto;
-        background-position: center 0;
-    }
-    .picture {
-        top: 177px;
-        left: 236px;
     }
 }
-@media screen and (min-width: 800px) {
-    .picture {
-        top: 305px;
-        left: 255px;
-    }
-}
+
 @media screen and (min-width: 801px) {
-    /* Añadido main-container */
+    .main {
+        width: 640px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
     .main-container {
+        position: relative;
         max-width: 1280px;
         margin-left: auto;
         margin-right: auto;
     }
+    
+    .main-container::after {
+        content: url(../assets/img/box-desktop.svg);
+        position: absolute;
+        top: 46%;
+        left: 6.65%;
+        z-index: 20;
+        transition: all .5s ease;
+    }
+    
+    .main-container.box-show::after {
+        transform: translateX(-40px);
+    }
+
     .main {
         width: 75%;
-        padding: 2rem 4rem 4rem;
-        background-image: url(../assets/img/bg-pattern-desktop.svg);
-        /* background-position: -540px -280px; */
-        background-position: -545px -280px;
-        background-size: 100%;
+        padding: 2rem 4rem 4rem;       
         display: flex;
         align-items: center;
         overflow: hidden;
     }
+    
+    
     .picture {
-        position: static;
-        /* margin-left: -139px; */
-        margin-left: -145px;
+        position: relative;
+        margin-top: 10px;
+        margin-left: -265px;
+        z-index: 10;
     }
+    
     .picture::before {
-        content: url(../assets/img/box-desktop.svg);
-        position: absolute;
-        /* top: 430px; */
-        top: 465px;
-        left: 79px;
-        transition: all .5s ease;
+        content: url(../assets/img/bg-pattern-desktop.svg);
+        top: -365px;
+        left: 105px;
+        z-index: -1;
     }
-    .picture.box-show::before {
-        transform: translateX(-40px);
-    }
+
     .header {
         text-align: left;
     }
+
     .container {
         width: 50%;
         margin-left: auto;
     }
+
     .accordion {
         height: 280px;
     }
+
     .accordion__question {
         font-size: 1rem;
     }
+
     .accordion__question:hover {
         color: var(--soft-red);
     }
